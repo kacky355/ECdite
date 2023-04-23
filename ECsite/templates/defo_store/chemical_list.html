@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block contents %}
+<div class="col-10 offset-1">
+    <h2>chemical list</h2>
+    <div class="container">
+    <div class="row justify-content-start">
+    <form method="GET" action="{% url 'defo_store:chemical_list' %}">
+        <div class="col"><p>Chemical Type: <input type="text" name="chemical_type" value="{{ chemical_type }}"/></p></div>
+        <div class="col"><p>Chemical Name: <input type="text" name="chemical_name" value="{{ chemical_name }}"/></p></div>
+        <div class="col"><p>Cas No.: <input type="text" name="chemical_cas" value="{{ chemical_cas }}"/></p></div>
+        <div class="col"><p><input type="submit" value="Perform"/></p></div>
+    </form>
+    </div>
+</div>
+    <table class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <td>TYPE</td>
+                <td>Chemical Name</td>
+                <td>CAS No.</td>
+                <td>Price</td>
+                <td>Stock Amount</td>
+                <td>Manufacture</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for chemical in object_list %}
+            <tr>
+                <td>{{ chemical.chemical_type.name }}</td>
+                <td>{{ chemical.name }}</td>
+                <td>{{ chemical.cas }}</td>
+                <td>{{ chemical.price }}</td>
+                <td>{{ chemical.stock }}</td>
+                <td>{{ chemical.manufacture.name }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock contents %}

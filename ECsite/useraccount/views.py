@@ -21,6 +21,13 @@ class MyLoginView(LoginView):
     template_name = 'login.html'
     authentication_form = LoginForm
     
+    #ログイン維持するかのチェックボックス追加
+    def form_valid(self,form):
+        remember = form.cleaned_data['remember']
+        if remember:
+            self.request.session.set_expiry(1000000)
+        return super.form_valid(form)
+    
 
 class MyLogoutView(LogoutView):
     pass

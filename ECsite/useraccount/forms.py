@@ -25,6 +25,7 @@ class RegistrationForm(forms.ModelForm):
 class LoginForm(AuthenticationForm):
     email = forms.EmailField(label='Email address')
     password = forms.CharField(label='password', widget=forms.PasswordInput())
+    remenber = forms.BooleanField(label='keep login', required=False)
 
 # もう一つのログイン実装
 # class LoginForm(forms.Form):

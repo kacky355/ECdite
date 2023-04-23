@@ -19,6 +19,7 @@ load_dotenv(find_dotenv())
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = os.path.join(BASE_DIR,'templates')
 STATIC_DIR = os.path.join(BASE_DIR,'static')
+MEDIA_DIR = os.path.join(BASE_DIR,'media')
 
 
 # Quick-start development settings - unsuitable for production
@@ -43,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'useraccount',
+    'defo_store',
 ]
 
 #認証ユーザーモデル変更
@@ -134,3 +136,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = '/account/login/'
 LOGIN_REDIRECT_URL = '/account/top'
 LOGOUT_REDIRECT_URL = '/account/login/'
+
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
+
+# ログインの保持時間を10秒に設定
+# SESSION_COOKIE_AGE = 10
